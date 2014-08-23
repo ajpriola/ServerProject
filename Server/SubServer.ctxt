@@ -1,6 +1,6 @@
 #BlueJ class context
-comment0.params=socket
-comment0.target=SubServer(java.net.Socket)
+comment0.params=socket\ manager
+comment0.target=SubServer(java.net.Socket,\ ServerManager)
 comment1.params=
 comment1.target=void\ run()
 comment2.params=message

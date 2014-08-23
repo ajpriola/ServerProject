@@ -22,24 +22,26 @@ public class ServerManager {
         this.port = portInput;
         socketList = new Socket[serverLim];
         try {
-            ServerSocket serverSocket = new ServerSocket(port);
+            serverSocket = new ServerSocket(port);
             System.out.println("ServerManager: SERVER CREATED");
         } catch (Exception e) {
-            System.out.println("ServerManager: ERROR CREATING SERVER");
+            e.printStackTrace();
         }
-        startServer();
+        runServer();
     }
 
-    public void startServer() {
+    public void runServer() {
         running = true;
         while(running) {
             if(accepting) {
                 try {
                     Socket clientSocket = serverSocket.accept();
-                    SubServer sub = new SubServer(clientSocket);
+                    //Create new SubServer for a new client connection
+                    SubServer sub = new SubServer(clientSocket, this);
                     sub.start();
                 } catch (Exception e) {
-                    System.out.println("ServerManager: ERROR CREATING NEW CONNECTION");
+                    //System.out.println("ServerManager: ERROR CREATING NEW CONNECTION");
+                    e.printStackTrace();
                 }
             }
 
@@ -50,6 +52,10 @@ public class ServerManager {
         } catch (Exception e) {
             System.out.println("ServerManager: ERROR STOPPING SERVER");
         }
+    }
+    
+    public void recieveMessage(String message) {
+        System.out.println(message);
     }
 
     public void stopServer() {
