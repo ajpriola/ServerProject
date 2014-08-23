@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=portInput
+comment0.target=ServerManager(int)
+comment1.params=
+comment1.target=void\ startServer()
+comment2.params=
+comment2.target=void\ stopServer()
+comment3.params=
+comment3.target=void\ addConnection()
+comment4.params=
+comment4.target=void\ removeConnection()
+numComments=5
